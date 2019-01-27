@@ -1,0 +1,9 @@
+<p>
+  JOBS HOME
+</p>
+<p>
+    This page helps to view and create the Jobs in the system. 
+</p>
+<button (click)="createNewJob()">New Job</button>
+<campaign-dashboard-list></campaign-dashboard-list>
+<campaign-create *ngIf="jobUnderEdit"></campaign-create>

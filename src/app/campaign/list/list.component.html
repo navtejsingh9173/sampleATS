@@ -1,0 +1,23 @@
+<p>
+  JOBS LIST
+</p>
+<div *ngIf="!jobs || jobs.length === 0">
+  No Jobs Found. Create a Job to view the listing.
+</div>
+<div *ngIf="jobs && jobs.length">
+  <table title="Jobs List">
+    <th>ID</th>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Action</th>
+    <tr *ngFor="let job of jobs" (click)="selectCurrentJob(job)">
+      <td>{{job.id}}</td>
+      <td>{{job.category}}</td>
+      <td>{{job.title}}</td>
+      <td>{{job.description}}</td>
+      <td><button (click)="delete(job)">Delete</button></td>
+      <td><button (click)="selectJobToEdit(job)">Edit</button></td>
+    </tr>
+</table>
+</div>
