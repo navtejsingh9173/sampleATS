@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <span class="col-sm-2"><strong><h5>JOBS LIST</h5></strong></span>
+    <span class="col-sm-5"></span>
+    <span class="col-sm-5">
+      <strong>SEARCH </strong>
+      <input [ngModel]="searchKeyword" (ngModelChange)="changeKeyword($event)">
+    </span>
+  </div>
+  <div class="row" *ngIf="!jobs || jobs.length === 0">
+    <br>
+    <br>
+    No Jobs Found with the requested search.<br> Please modify the search parameter or create a new Job to view the listing.
+  </div>
+  <div *ngIf="jobs && jobs.length">
+    <div class="row">
+      <table class="table" title="Jobs List">
+        <thead>
+          <th scope="col">Id</th>
+          <th scope="col">Category</th>
+          <th scope="col">Title</th>
+          <th scope="col">Description</th>
+          <th scope="col">Action</th>
+        </thead>
+        <tr scope="row" *ngFor="let job of jobs" (click)="selectCurrentJob(job)">
+          <td>{{job.id}}</td>
+          <td>{{job.category}}</td>
+          <td>{{job.title}}</td>
+          <td>{{job.description}}</td>
+          <td class="align-items-center">
+            <span><button (click)="selectJobToEdit(job)">Edit</button></span>
+            <span><button (click)="delete(job)">Delete</button></span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

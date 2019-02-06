@@ -1,0 +1,24 @@
+<div>
+  <div class="row">
+      JOBS HOME
+      <br>
+      This page helps to view and create the Jobs in the system.
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-sm-5">
+    </div>
+    <div class="col-sm-1">
+      <button (click)="createNewJob()">New Job</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+      <div class="col-sm-6">
+        <app-campaign-home-list></app-campaign-home-list>
+      </div>
+      <div class="col-sm-6">
+        <app-campaign-create *ngIf="jobUnderEdit"></app-campaign-create>
+      </div>
+  </div>
+</div>
