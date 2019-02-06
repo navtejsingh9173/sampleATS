@@ -1,9 +1,42 @@
-<p>
-  <span *ngIf="!newJob.id">CREATE JOB</span>
-  <span *ngIf="newJob.id">UPDATE JOB</span>
-</p>
-<span>CATEGORY :: <input [(ngModel)]="newJob.category"></span>
-<span>TITLE :: <input [(ngModel)]="newJob.title"></span>
-<span>DESCRIPTION :: <input [(ngModel)]="newJob.description"></span>
-<span><button (click)="submitRequest()" title="SAVE/UPDATE JOB"><span *ngIf="!newJob.id">CREATE</span><span *ngIf="newJob.id">UPDATE</span></button></span>
-<span><button (click)="onCancelRequest()" title="SAVE/UPDATE JOB">Cancel</button></span>
+<div>
+  <div class="row">
+    <p>
+      <span *ngIf="!newJob.id"><strong><h5>CREATE JOB</h5></strong></span>
+      <span *ngIf="newJob.id"><strong><h5>UPDATE JOB</h5></strong></span>
+    </p>
+  </div>
+  <div class="row">
+    <div class="table">
+      <div class="row align-items-start" >
+        <span class="col-sm-2"><strong>CATEGORY</strong></span>
+        <select [(ngModel)]="newJob.category">
+            <option *ngFor="let jobType of jobTypesArray" value={{jobType}}>
+                {{jobTypes[jobType]}}
+            </option>
+        </select>
+      </div><br>
+      <div class="row align-items-start" >
+        <span class="col-sm-2"><strong>TITLE</strong></span>
+        <span class="col-sm-4"><input [(ngModel)]="newJob.title"></span>
+      </div><br>
+      <div class="row align-items-start" >
+        <span class="col-sm-2"><strong>DESCRIPTION</strong></span>
+        <span class="col-sm-4"><input [(ngModel)]="newJob.description"></span>
+      </div><br>
+      <div class="row align-items-start" >
+        <span class="col-sm-2"></span>
+        <span class="col-sm-2 align-items-end">
+          <button (click)="submitRequest()" title="{{!newJob.id ? 'SAVE' : 'UPDATE' + 'JOB'}}">
+            <span *ngIf="!newJob.id">SAVE</span>
+            <span *ngIf="newJob.id">UPDATE</span>
+          </button>
+        </span>
+        <span class="col-sm-2">
+          <button (click)="onCancelRequest()" title="Cancel">
+            CANCEL
+          </button>
+        </span>
+      </div><br>
+    </div>
+  </div>
+</div>

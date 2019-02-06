@@ -22,13 +22,13 @@
           <th scope="col">Description</th>
           <th scope="col">Action</th>
         </thead>
-        <tr scope="row" *ngFor="let job of jobs" (click)="selectCurrentJob(job)">
+        <tr scope="row" *ngFor="let job of jobs" (click)="selectJobToEdit(job)">
           <td>{{job.id}}</td>
-          <td>{{job.category}}</td>
+          <td>{{jobTypes[job.category]}}</td>
           <td>{{job.title}}</td>
           <td>{{job.description}}</td>
           <td class="align-items-center">
-            <span><button (click)="selectJobToEdit(job)">Edit</button></span>
+            <span [hidden]="true"><button (click)="selectJobToEdit(job)">Edit</button></span>
             <span><button (click)="delete(job)">Delete</button></span>
           </td>
         </tr>

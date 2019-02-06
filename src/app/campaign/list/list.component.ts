@@ -18,6 +18,12 @@ export class CampaignHomeListComponent implements OnInit {
   currentJobUnderEdit: CampaignDTO;
   searchKeyword = '';
   searchKeywordInputSubject: Subject<string> = new Subject<string>();
+  jobTypes: Object = {
+    'TEMPORARY': 'Temporary',
+    'FREELANCER': 'Freelancer',
+    'FULL_TIME': 'Full Time',
+    'PART_TIME': 'Part Time'
+  };
 
   constructor(private campaignResourceService: CampagnResourceService, private campaignDataService: CampagnDataService) {
     this.campaignResourceService = campaignResourceService;
@@ -48,6 +54,7 @@ export class CampaignHomeListComponent implements OnInit {
     this.campaignResourceService.getCampaigns(this.searchKeyword).subscribe((data) => {
       this.jobs = data;
       this.campaignDataService.setCurrentJob(this.jobs[0]);
+      this.selectJobToEdit(this.jobs[0] ? this.jobs[0] : undefined);
       console.log(`The Data loaded is :: ${JSON.stringify(data)}`);
     });
   }
@@ -68,7 +75,7 @@ export class CampaignHomeListComponent implements OnInit {
   }
 
   selectJobToEdit(job: CampaignDTO) {
-    this.campaignDataService.setCurrentJobUnderEdit(new CampaignDTO(job));
+    this.campaignDataService.setCurrentJobUnderEdit(job ? new CampaignDTO(job) : undefined);
   }
 
   changeKeyword(newValue) {

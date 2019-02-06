@@ -11,6 +11,18 @@ import { CampagnDataService } from '../service/campagn-data.service';
 export class CampaignCreateComponent implements OnInit {
 
   public newJob: CampaignDTO;
+  jobTypes: Object = {
+    'TEMPORARY': 'Temporary',
+    'FREELANCER': 'Freelancer',
+    'FULL_TIME': 'Full Time',
+    'PART_TIME': 'Part Time'
+  };
+  jobTypesArray: Object = [
+    'TEMPORARY',
+    'FULL_TIME',
+    'PART_TIME',
+    'FREELANCER'
+  ];
 
   constructor(private campaignResourceService: CampagnResourceService, private campaignDataService: CampagnDataService) { }
 
